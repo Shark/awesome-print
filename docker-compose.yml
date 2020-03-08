@@ -1,0 +1,16 @@
+version: '3'
+services:
+  cups:
+    build: .
+    ports:
+      - 631:631
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+      - /dev/bus/usb:/dev/bus/usb
+      - cups_etc:/etc/cups
+      - cups_log:/var/log/cups
+    privileged: true
+    restart: always
+volumes:
+  cups_etc:
+  cups_log:
